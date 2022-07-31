@@ -1,0 +1,34 @@
+## App
+
+### Object
+
+| Column    |  Type  |               Description |
+| :-------- | :----: | ------------------------: |
+| key       | string |       Private key for app |
+| hash      | string |       Public hash for app |
+| user_hash | string | Public hash for app owner |
+| name      | string |       Name of application |
+
+### Endpoints
+<br />
+#### `GET` /App?auth=`{user_hash}`
+##### Paramaters
+- `{user_hash}` string
+    The hash generated for the developer.
+##### Output
+Returns all apps owned by the user.
+
+#### `POST` /App?auth=`{user_hash}`
+##### Paramaters
+- `{user_hash}` string
+    The hash generated for the developer.
+##### Request Body
+The request body needs to be in the form of JSON.
+```json
+{
+  "name": "App Name"
+}
+```
+##### Output
+- Creates a new app owned by the developer
+- Returns the new app.
