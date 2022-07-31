@@ -1,0 +1,63 @@
+## Asset
+
+### Object
+
+| Column            |  Type  |               Description                     |
+| :---------------: | :----: | ---------------------------------------------:|
+| app_hash          | string |       Public hash for app which created asset |
+| user_hash         | string |                   Public hash for asset owner |
+| name              | string |                                 Name of asset |
+| type              | string |                                 Type of asset |
+| properties        | dict   | Dictionary of properties of asset (POST only) |
+| properties_json   | string |                   Properties of asset in json |
+
+### Endpoints
+<br />
+#### `GET` /Asset?user_hash=`{user_hash}`&app_hash=`{app_hash}`&name=`{asset_name}`
+##### Parameters
+- `{user_hash}` string
+    
+    The hash generated for the developer.
+
+- `{app_hash}` string
+
+    The hash generated for the app.
+
+- `{name}` string
+
+    The name of the asset.
+    
+##### Output
+Returns asset with name and app owned by the user.
+
+#### `GET` /Asset/all?user_hash=`{user_hash}`
+##### Parameters
+- `{user_hash}` string
+    
+    The hash generated for the developer.
+##### Output
+Returns all assets owned by the user.
+
+#### `POST` /App?user_hash=`{user_hash}`&app_auth=`{app_auth}`
+##### Parameters
+- `{user_hash}` string
+    
+    The hash generated for the user.
+
+- `{app_auth}` string
+
+    The key of the app creating the asset.
+##### Request Body
+The request body needs to be in the form of JSON.
+```json
+{
+  "name": "Asset Name",
+  "type": "Asset Type",
+  "properties": {
+      "property_one": "value"
+  }
+}
+```
+##### Output
+- Creates a new asset owned by the user and app.
+- Returns the new asset.

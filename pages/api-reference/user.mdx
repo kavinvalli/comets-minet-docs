@@ -1,0 +1,47 @@
+## User
+
+### Object
+
+| Column    |  Type  |               Description |
+| :-------- | :----: | ------------------------: |
+| key       | string |      Private key for user |
+| hash      | string |      Public hash for user |
+| email     | string |             Email of user |
+| authorized_apps     | list |       List of authorized apps for user |
+
+### Endpoints
+<br />
+#### `GET` /User?auth=`{user_key}`
+##### Parameters
+- `{user_key}` string
+    
+    The key generated for the user.
+
+##### Output
+Returns user object.
+
+#### `POST` /User
+##### Request Body
+The request body needs to be in the form of JSON.
+```json
+{
+  "email": "User email"
+}
+```
+##### Output
+- Creates a new user with email if doesn't already exist.
+- Returns the new user or existing user.
+
+#### `POST` /User/authorize?auth=`{user_key}`&app_hash=`{app_hash}`
+##### Parameters
+- `{user_key}` string
+    
+    The key generated for the user.
+
+- `{app_hash}` string
+
+    The hash generated for the app
+
+##### Output
+- Authorized the app with the hash to create assets on behalf of the user.
+

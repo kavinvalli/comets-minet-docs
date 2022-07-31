@@ -11,17 +11,27 @@
 
 ### Endpoints
 <br />
-#### `GET` /App?auth=`{user_hash}`
-##### Paramaters
-- `{user_hash}` string
-    The hash generated for the developer.
+#### `GET` /App/?auth=`{user_key}`
+##### Parameters
+- `{user_key}` string
+    
+    The key generated for the user.
+##### Output
+Returns all apps authorized by the user.
+
+#### `GET` /App/owned?auth=`{user_key}`
+##### Parameters
+- `{user_key}` string
+    
+    The key generated for the developer.
 ##### Output
 Returns all apps owned by the user.
 
-#### `POST` /App?auth=`{user_hash}`
-##### Paramaters
-- `{user_hash}` string
-    The hash generated for the developer.
+#### `POST` /App?auth=`{user_key}`
+##### Parameters
+- `{user_key}` string
+    
+    The key generated for the developer.
 ##### Request Body
 The request body needs to be in the form of JSON.
 ```json
